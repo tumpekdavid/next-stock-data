@@ -3,14 +3,14 @@ import { api } from "@/lib/api-client";
 import { StockSuggestion } from "@/types/api"
 
 const fetchStockSuggestions = async (keywords: string): Promise<StockSuggestion[]> => {
-    const response = await api.get("", {
+    const response = await api.get("/query", {
       params: {
         function: "SYMBOL_SEARCH",
         keywords,
       },
     });
   
-    // Access the response data
+    console.log(response);
     const { bestMatches } = response.data;
   
     // Map the response data into the required format
