@@ -1,3 +1,7 @@
+"use client";
+
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/app/lib/react-query"
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -28,14 +32,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-        <header className="p-4 bg-blue-600 text-white">
-          <nav className="flex space-x-4">
-            <a href="/search" className="hover:underline">
-              Search
-            </a>
-          </nav>
-        </header>
-        <main className="p-6">{children}</main>
+        <QueryClientProvider client={queryClient}>
+          <header className="p-4 bg-blue-600 text-white">
+            <nav className="flex space-x-4">
+              <a href="/search" className="hover:underline">
+                Search
+              </a>
+            </nav>
+          </header>
+          <main className="p-6">{children}</main>
+        </QueryClientProvider>
       </body>
     </html>
   );
