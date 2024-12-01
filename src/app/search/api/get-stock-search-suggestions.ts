@@ -39,9 +39,9 @@ const mockStockSuggestions: StockSuggestion[] = [
   ];
 
 const fetchStockSuggestions = async (keywords: string): Promise<StockSuggestion[]> => {
-    // return mockStockSuggestions.filter((item) =>
-    //     item.name.toLowerCase().includes(keywords.toLowerCase())
-    //   );
+    return mockStockSuggestions.filter((item) =>
+        item.name.toLowerCase().includes(keywords.toLowerCase())
+      );
 
     const response = await api.get("/query", {
       params: {

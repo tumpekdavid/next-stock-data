@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useStockSuggestions } from "@/app/search/api/get-stock-search-suggestions";
+import Link from "next/link";
 
 function SearchPage() {
   const [keywords, setKeywords] = useState(""); // State to hold search input
@@ -28,7 +29,9 @@ function SearchPage() {
               key={suggestion.symbol}
               className="p-3 border-b border-gray-200 hover:bg-gray-100 cursor-pointer"
             >
-              {suggestion.name} ({suggestion.symbol})
+              <Link href={`/stock-details/${suggestion.symbol}`} className="text-blue-600 hover:underline">
+                  {suggestion.name} ({suggestion.symbol})
+              </Link>
             </li>
           ))}
         </ul>
