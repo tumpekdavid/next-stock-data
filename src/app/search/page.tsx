@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { useStockSuggestions } from "@/app/search/api/get-stock-search-suggestions";
 import Link from "next/link";
+import { useDebounce } from "@/hooks/use-debounce";
 
-function SearchPage() {
-  const [keywords, setKeywords] = useState(""); // State to hold search input
-  const { data: suggestions, isLoading, isError } = useStockSuggestions(keywords); // React Query hook
+export default function SearchPage() {
+  const [keywords, setKeywords] = useState("");
+  const debouncedKeywords = useDebounce(keywords, 1000);
+  const { data: suggestions, isLoading, isError } = useStockSuggestions(debouncedKeywords);
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
@@ -42,5 +44,3 @@ function SearchPage() {
     </div>
   );
 }
-
-export default SearchPage;

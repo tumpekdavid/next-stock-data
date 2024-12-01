@@ -39,6 +39,7 @@ const mockStockSuggestions: StockSuggestion[] = [
   ];
 
 const fetchStockSuggestions = async (keywords: string): Promise<StockSuggestion[]> => {
+    console.log("fetchStockSuggestions called")
     return mockStockSuggestions.filter((item) =>
         item.name.toLowerCase().includes(keywords.toLowerCase())
       );
