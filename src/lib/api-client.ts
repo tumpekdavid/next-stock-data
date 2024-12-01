@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { env } from "process";
 
 
 export const api = Axios.create({

@@ -5,7 +5,7 @@ import { useStockSuggestions } from "@/app/search/api/get-stock-search-suggestio
 
 function SearchPage() {
   const [keywords, setKeywords] = useState(""); // State to hold search input
-  const { data: suggestions, isLoading, isError, error } = useStockSuggestions(keywords); // React Query hook
+  const { data: suggestions, isLoading, isError } = useStockSuggestions(keywords); // React Query hook
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
@@ -20,7 +20,7 @@ function SearchPage() {
         />
       </div>
       {isLoading && <p>Loading suggestions...</p>}
-      {isError && <p className="text-red-500">Error: {(error as Error).message}</p>}
+      {isError && <p className="text-red-500">An error happened while fetching the data. Please try again later.</p>}
       {suggestions && suggestions.length > 0 && (
         <ul className="bg-white border border-gray-300 rounded shadow-md">
           {suggestions.map((suggestion) => (
