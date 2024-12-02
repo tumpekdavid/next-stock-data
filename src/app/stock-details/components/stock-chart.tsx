@@ -28,16 +28,21 @@ export default function StockChart({ symbol }: StockChartProps) {
       <LineChart
         series={[
           {
-            data: closingPrices, // Data for the y-axis
-            label: "Price", // Label for the series
+            data: closingPrices,
+            label: "Price",
           },
         ]}
         xAxis={[
           {
-            scaleType: "point", // As in the example
-            data: xLabels, // Labels for the x-axis
+            scaleType: "point",
+            data: xLabels,
           },
         ]}
+        yAxis={[
+            {
+              min: 0,
+            },
+          ]}    
       />
     </div>
   );

@@ -11,7 +11,7 @@ export default function SearchField({ searchText, onChange }: SearchFieldProps) 
       type="text"
       placeholder="Enter stock name or symbol..."
       value={searchText}
-      onChange={(e) => onChange(e.target.value)} // Pass the updated value to the parent
+      onChange={(e) => onChange(e.target.value)}
       className="w-full p-3 border border-gray-300 rounded"
     />
   );
