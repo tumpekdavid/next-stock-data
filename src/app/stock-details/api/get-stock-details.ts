@@ -1,6 +1,6 @@
 import { api } from "@/lib/api-client";
 import { useQuery } from "@tanstack/react-query";
-import mockData from "./mockDetailData.json";
+import { GlobalQuoteApiResponse } from "@/types/api";
 
 export type StockDetails = {
   symbol: string;
@@ -16,19 +16,14 @@ export type StockDetails = {
 };
 
 const fetchStockDetails = async (symbol: string): Promise<StockDetails> => {
-//   const response = await api.get("/query", {
-//     params: {
-//       function: "GLOBAL_QUOTE",
-//       symbol,
-//     },
-//   });
+  const response = await api.get<GlobalQuoteApiResponse>("/query", {
+    params: {
+      function: "GLOBAL_QUOTE",
+      symbol,
+    },
+  });
 
-//   const { "Global Quote": globalQuote } = response.data;
-
-  const response = mockData;
-
-  const { "Global Quote": globalQuote } = response;
-
+  const { "Global Quote": globalQuote } = response.data;
 
   return {
     symbol: globalQuote["01. symbol"],
